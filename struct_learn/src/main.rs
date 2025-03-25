@@ -9,13 +9,13 @@ use std::io;
 // }
 
 struct Area {
-    width: u32,
+    width: Option<u32>,
     height: u32,
 }
 
 impl Area {
     fn area(&self) -> u32 {
-        self.width * self.height
+        self.width.unwrap_or(0) * self.height
     }
 }
 
@@ -54,7 +54,7 @@ fn main() {
 
 
     let rect1 = Area {
-        width: wide,
+        width: Some(wide),
         height: len,
     };
 
@@ -70,5 +70,5 @@ fn main() {
 }
 
 fn area(rect : &Area) -> u32 {
-    rect.width * rect.height
+    rect.width.unwrap_or(0) * rect.height
 }
